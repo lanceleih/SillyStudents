@@ -7,14 +7,16 @@ and open the template in the editor.
 <html>
     <head>
         <meta charset="UTF-8">
-        <title></title>
+        <title>Silly Students</title>
     </head>
     <body>
         <?php
         include('Student.php');
 
+        // Will hold students and their details
         $students = array();
 
+        // Create the array of Students
         $first = new Student();
         $first->surname = "Doe";
         $first->first_name = "John";
@@ -36,11 +38,21 @@ and open the template in the editor.
         $second->add_grade(50);
         $students['a456'] = $second;
         
+        $third = new Student();
+        $third->surname = "Herradura";
+        $third->first_name = "Lancelei";
+        $third->add_email('home','lanceleih@live.ca');
+        $third->add_email('work','lanceleih@gmail.com');
+        $third->add_grade(95);
+        $third->add_grade(95);
+        $third->add_grade(80);
+        $students['b789'] = $third;
+        
         ksort($students); // one of the many sort functions
         
+        // Display students
         foreach($students as $student)
             echo $student->toString();
-        
         
         ?>
     </body>
