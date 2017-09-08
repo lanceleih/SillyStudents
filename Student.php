@@ -90,11 +90,18 @@ class Student {
     function toString() {
         $result = $this->first_name . ' ' . $this->surname;
         $result .= ' ('.$this->average().")\n";
-        foreach($this->emails as $which=>$what)
-            $result .= $which . ': '. $what. "\n";
+        $length = strlen($result) - 1;
+        for($i = 0; $i < $length; $i++)
+            $result .= '-';
+        $result .= "\n";
+        foreach($this->emails as $which=>$what) {
+            if(strlen($which) < 5)
+                $result .= $which . ':  '. $what. "\n";
+            else
+                $result .= $which . ': '. $what. "\n";
+        }
         $result .= "\n";
         return '<pre>'.$result.'</pre>';
     }
     
-
 }
